@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>balloon</title>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center; 
+                height: 100vh;
+            }
+            .balloon {
+                border-radius: 100%;
+            }
+        </style>
+    </head>
+    <body> 
+        <div class="balloon" style="width: 200px; height: 200px; background-color: red;"></div> 
+        <script>
+            $(document).ready(function () {
+                let colorIndex = 0;
+                const colors = ["red", "green", "blue"]
+                
+                $(".balloon").on("click", function (event) {
+                    var balloonElement = $(this);
+    
+                    var currentWidth = balloonElement.width() + 10;
+                    var currentHeight = balloonElement.height() + 10;
+    
+    
+                    if (currentWidth > 420) {
+                        balloonElement.css("width", "200px");
+                        balloonElement.css("height", "200px");
+                    } else {
+                        balloonElement.css("width", currentWidth);
+                        balloonElement.css("height", currentHeight);
+                    }
+                    colorIndex = (colorIndex + 1) % colors.length;
+                    balloonElement.css("background-color", colors[colorIndex]);
+                });
+    
+                $(".balloon").on("mouseleave", function (event) {
+                    var balloonElement = $(this);
+    
+                    var currentWidth = balloonElement.width() - 5;
+                    var currentHeight = balloonElement.height() - 5;
+                    console.log(currentWidth)
+                    if (currentWidth > 195) {
+                        balloonElement.css("width", currentWidth);
+                        balloonElement.css("height", currentHeight);
+                        if (colorIndex > 0) {
+                            colorIndex = (colorIndex - 1) % colors.length;
+                        } else {
+                            colorIndex = colors.length - 1;
+                        }
+    
+                        balloonElement.css("background-color", colors[colorIndex]);
+                    }
+                });
+    
+            });
+    
+        </script>          
+    </body>
+</html>

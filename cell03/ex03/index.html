@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Task Management</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                background: #2B2E3A;
+                color: #ecf0f1;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+            }
+            #ft_list {
+                padding: 20px;
+                border: 1px solid #2c3e50;
+                border-radius: 8px;
+                background-color: #383A40;
+                max-width: 400px;
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            button {
+                padding: 10px;
+                background-color: #2ecc71;
+                color: #fff;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            button:hover {
+                background-color: #27ae60;
+            }
+        </style>
+    </head>
+    <body>  
+        <div id="ft_list"></div>
+        <button onclick="newTask()">New</button>
+        <script src="todo.js"></script>
+    </body>
+</html>

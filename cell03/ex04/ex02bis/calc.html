@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calc</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .calc {
+            display: flex;
+            flex-direction: row;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calc">
+        <input type="text" id="num1" style="margin-right: 5px;">
+        <select name="operands" id="operands" style="margin-right: 5px;">
+            <option selected operand>select operand</option>
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+            <option value="%">%</option>
+        </select>
+        <input type="text" id="num2" style="margin-right: 5px;">
+        <button>Try me!</button>
+    </div>
+    <script>
+        $(document).ready(function () {
+            var intervalID;
+            function showAlert() {
+                confirm("Please, use me...");
+                timer();
+            }
+            function timer() {
+                clearInterval(intervalID);
+                intervalID = setInterval(showAlert, 30000);
+            }
+
+            timer();
+            function alertResults(a) {
+                console.log(a);
+                alert(a);
+            }
+            function error(a) {
+                alert(a);
+            }
+
+            $("button").on("click", function (event) {
+
+                var nums1 = parseInt($("#num1").val());
+                var operands = $("#operands").val();
+                var nums2 = parseInt($("#num2").val());
+                timer();
+                
+                if (isNaN(nums1) || isNaN(nums2) || nums1 < 0 || nums2 < 0) {
+                    error("Error :(");
+                    resetData();
+                    return;
+                }
+
+                if (operands === null) {
+                    error("Error :(");
+                    resetData();
+                    return;
+                } else if (operands === "+") {
+                    alertResults(nums1 + nums2);
+                } else if (operands === "-") {
+                    alertResults(nums1 - nums2);
+                } else if (operands === "*") {
+                    alertResults(nums1 * nums2);
+                } else if (operands === "/") {
+                    if (nums2 === 0) {
+                        alertResults("It’s over 9000!");
+                        resetData();
+                        return;
+                    }
+                    alertResults(nums1 / nums2);
+                } else if (operands === "%") {
+                    if (nums2 === 0) {
+                        alertResults("It’s over 9000!");
+                        resetData();
+                        return;
+                    }
+                    alertResults(nums1 % nums2);
+                }
+                resetData();
+            });
+
+            function resetData() {
+                $("#num1").val("")
+                $("#operands").prop("selectedIndex", 0);
+                $("#num2").val("")
+            }
+        });
+
+    </script>
+</body>
+
+</html>

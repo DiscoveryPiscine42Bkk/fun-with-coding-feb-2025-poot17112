@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>balloon</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center; 
+                height: 100vh;
+            }
+            .balloon {
+                border-radius: 100%;
+            }
+        </style>
+    </head>
+    <body>  
+        <div onmouseleave="reduceBallon()" onclick="growBallon()" class="balloon" style="width: 200px; height: 200px; background-color: red;"></div>
+
+        <script>
+            let colorIndex = 0;
+            const colors = ["red","green","blue"]
+
+            function growBallon() {
+                const ballon = document.getElementsByClassName("balloon")[0];
+                
+                if(parseInt(ballon.style.width) > 420) {
+                    ballon.style.width = "200px";
+                    ballon.style.height = "200px";
+                } else {
+                    ballon.style.width = (parseInt(ballon.style.width) + 10) + 'px';
+                    ballon.style.height = (parseInt(ballon.style.height) + 10) + 'px';
+                }
+
+                colorIndex = (colorIndex+1) % colors.length;
+                ballon.style.backgroundColor = colors[colorIndex];
+            
+            }
+
+            function reduceBallon() {
+                const ballon = document.getElementsByClassName("balloon")[0];
+                if(parseInt(ballon.style.width) > 200) {
+                    ballon.style.width = (parseInt(ballon.style.width) - 5) + 'px';
+                    ballon.style.height = (parseInt(ballon.style.height) - 5) + 'px';
+
+                    if(colorIndex > 0) {
+                        colorIndex = (colorIndex-1) % colors.length;
+                    } else {
+                        colorIndex = colors.length-1;
+                    }
+                    ballon.style.backgroundColor = colors[colorIndex];
+                }
+
+            }
+        </script>
+    </body>
+</html>
