@@ -1,4 +1,3 @@
-#!/bin/bash
 if [ $# -eq 0 ]
 then
 	echo "No arguments supplied";
@@ -7,5 +6,5 @@ fi
 
 for i in "$@";
 do
-	echo $i;
+	mkdir "ex$i";
 done

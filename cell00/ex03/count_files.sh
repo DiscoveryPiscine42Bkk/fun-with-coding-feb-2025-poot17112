@@ -1,1 +1,1 @@
-echo "$(find . -maxdepth 1 -type f | wc -l)"
+ls | wc -l
