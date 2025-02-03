@@ -1,0 +1,26 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+td {
+    text-align: left;
+    height: 100px;
+    border: 1px solid black;
+
+}
+.first {
+    width: 50%;
+    background-color: #3498db;
+}
+
+.second {
+    width: 50%;
+    background-color: #e74c3c;
+}
+
