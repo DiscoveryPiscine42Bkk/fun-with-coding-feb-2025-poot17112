@@ -10,7 +10,8 @@
             display: flex;
             flex-direction: row;
         }
-        .option{
+
+        .option {
             text-align: center;
         }
     </style>
@@ -32,8 +33,11 @@
     </div>
     <script>
         var intervalID;
-        function alertResults(a) {
+        function alertResults(a, error = false) {
             alert(a);
+            if (!error) {
+                console.log(a)
+            }
         }
         function error(a) {
             alert(a);
@@ -62,20 +66,20 @@
                 alertResults(nums1 * nums2);
             } else if (opers === "/") {
                 if (nums2 === 0) {
-                    alertResults("It’s over 9000!");
+                    alertResults("It’s over 9000!", true);
                     resetData();
                     return;
                 }
                 alertResults(nums1 / nums2);
             } else if (opers === "%") {
                 if (nums2 === 0) {
-                    alertResults("It’s over 9000!");
+                    alertResults("It’s over 9000!", true);
                     resetData();
                     return;
                 }
                 alertResults(nums1 % nums2);
             }
-            
+
 
         }
 
