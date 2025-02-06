@@ -58,13 +58,13 @@
                 
                 if (isNaN(nums1) || isNaN(nums2) || nums1 < 0 || nums2 < 0) {
                     error("Error :(");
-                    resetData();
+                    
                     return;
                 }
 
                 if (operands === null) {
                     error("Error :(");
-                    resetData();
+                    
                     return;
                 } else if (operands === "+") {
                     alertResults(nums1 + nums2);
@@ -75,26 +75,21 @@
                 } else if (operands === "/") {
                     if (nums2 === 0) {
                         alertResults("It’s over 9000!");
-                        resetData();
+                        
                         return;
                     }
                     alertResults(nums1 / nums2);
                 } else if (operands === "%") {
                     if (nums2 === 0) {
                         alertResults("It’s over 9000!");
-                        resetData();
+                        
                         return;
                     }
                     alertResults(nums1 % nums2);
                 }
-                resetData();
+                
             });
 
-            function resetData() {
-                $("#num1").val("")
-                $("#operands").prop("selectedIndex", 0);
-                $("#num2").val("")
-            }
         });
 
     </script>
